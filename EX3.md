@@ -1,6 +1,5 @@
 # EX 3 SubQueries, Views and Joins 
-
-
+## Date: 17/8/23
 ## Create employee Table
 ```sql
 CREATE TABLE EMP (EMPNO NUMBER(4) PRIMARY KEY,ENAME VARCHAR2(10),JOB VARCHAR2(9),MGR NUMBER(4),HIREDATE DATE,
@@ -71,7 +70,6 @@ INSERT INTO DEPT (DEPTNO, DNAME, LOC) VALUES (40, 'OPERATIONS', 'BOSTON');
 ![2](https://github.com/Divya110205/EX-3-SubQueries-Views-and-Joins/assets/119404855/41c5b033-6187-4ae9-8813-d37abecfda85)
 
 ### Q1) List the name of the employees whose salary is greater than that of employee with empno 7566.
-
 ### QUERY:
 ```
 SELECT ENAME FROM EMP WHERE SAL >(select SAL from EMP where EMPNO=7566);
@@ -80,7 +78,6 @@ SELECT ENAME FROM EMP WHERE SAL >(select SAL from EMP where EMPNO=7566);
 ![3](https://github.com/Divya110205/EX-3-SubQueries-Views-and-Joins/assets/119404855/0c92f041-407b-4cb1-836d-cb0c88b38cca)
 
 ### Q2) List the ename,job,sal of the employee who get minimum salary in the company.
-
 ### QUERY:
 ```
 select ENAME,JOB,SAL from EMP where SAL =(select MIN(SAL) from EMP);
@@ -89,7 +86,6 @@ select ENAME,JOB,SAL from EMP where SAL =(select MIN(SAL) from EMP);
 ![4](https://github.com/Divya110205/EX-3-SubQueries-Views-and-Joins/assets/119404855/d0e402ea-3023-444a-a40e-21f695c610d6)
 
 ### Q3) List ename, job of the employees who work in deptno 10 and his/her job is any one of the job in the department ‘SALES’.
-
 ### QUERY:
 ```
 select ENAME,JOB from EMP where  DEPTNO=10 AND JOB='SALESMAN';
@@ -98,7 +94,6 @@ select ENAME,JOB from EMP where  DEPTNO=10 AND JOB='SALESMAN';
 ![5](https://github.com/Divya110205/EX-3-SubQueries-Views-and-Joins/assets/119404855/7ce53d4d-cccf-4b36-af8c-a9443d1f055d)
 
 ### Q4) Create a view empv5 (for the table emp) that contains empno, ename, job of the employees who work in dept 10.
-
 ### QUERY:
 ```
 create view empv5 as select EMPNO,ENAME,JOB from EMP where DEPTNO=10;
@@ -107,7 +102,6 @@ create view empv5 as select EMPNO,ENAME,JOB from EMP where DEPTNO=10;
 ![6](https://github.com/Divya110205/EX-3-SubQueries-Views-and-Joins/assets/119404855/d33dec60-d786-44bb-947b-0b8395b1a28e)
 
 ### Q5) Create a view with column aliases empv30 that contains empno, ename, sal of the employees who work in dept 30. Also display the contents of the view.
-
 ### QUERY:
 ```
 create view empv30 AS select EMPNO,ENAME,SAL from EMP where DEPTNO=30;
@@ -116,7 +110,6 @@ create view empv30 AS select EMPNO,ENAME,SAL from EMP where DEPTNO=30;
 ![8](https://github.com/Divya110205/EX-3-SubQueries-Views-and-Joins/assets/119404855/2e1c84ac-60e1-461a-af14-276e66bdfcef)
 
 ### Q6) Update the view empv5 by increasing 10% salary of the employees who work as ‘CLERK’. Also confirm the modifications in emp table
-
 ### QUERY:
 ```
 update EMP set SALARY=SALARY*1.1 WHERE JOB='clerk';
@@ -168,7 +161,6 @@ INSERT INTO Salesman1 (salesman_id, name, city, commission) VALUES(5003, 'Lauson
 ![11](https://github.com/Divya110205/EX-3-SubQueries-Views-and-Joins/assets/119404855/7ef9931a-885c-41d8-856c-216f4d61000a)
 
 ### Q7) Write a SQL query to find the salesperson and customer who reside in the same city. Return Salesman, cust_name and city.
-
 ### QUERY:
 ```
 select s.name,c.cust_name,s.city from salesman1 as s ,customer1 as c where s.city=c.city;
@@ -177,7 +169,6 @@ select s.name,c.cust_name,s.city from salesman1 as s ,customer1 as c where s.cit
 ![12](https://github.com/Divya110205/EX-3-SubQueries-Views-and-Joins/assets/119404855/a35300d2-04ed-4510-8610-3765f4795164)
 
 ### Q8) Write a SQL query to find salespeople who received commissions of more than 13 percent from the company. Return Customer Name, customer city, Salesman, commission.
-
 ### QUERY:
 ```
 select s.name,c.cust_name,c.city,s.commission from salesman1 as s inner join customer1 as c on
@@ -187,7 +178,6 @@ select s.name,c.cust_name,c.city,s.commission from salesman1 as s inner join cus
 ![13](https://github.com/Divya110205/EX-3-SubQueries-Views-and-Joins/assets/119404855/12253c4d-f176-4c3f-bf79-fe1480763153)
 
 ### Q9) Perform Natural join on both tables
-
 ### QUERY:
 ```
 select s.name,c.cust_name,c.city,s.commission from salesman1 as s natural join customer1 as c where s.commission>0.13;
